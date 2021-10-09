@@ -6,24 +6,35 @@ import VueRouter from 'vue-router';
 import './bootstrap';
 import Post from  './Post';
 import PostList from  './PostList';
+import TopicPostList from  './TopicPostList';
 import VueApollo from 'vue-apollo'
+import AuthorPostList from './AuthorPostList'
 window.Vue = Vue;
  Vue.use(VueRouter);
 
 const routes = [
     {
     path: '/',
-  
+    name:'index',
     component: PostList
     },
     {
         path: '/post/:id',
-      
+        name:'post',
         component: Post
         },
-  
+        {
+          path: '/topics/:slug',
+          name:'topic',
+          component: TopicPostList
+          },
+          {
+            path: '/authors/:id',
+            name:'author',
+            component:  AuthorPostList
+            }
 ];
-
+ 
 Vue.use(VueApollo);
 const apolloClient = new ApolloClient({
   // You should use an absolute URL here
